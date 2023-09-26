@@ -1,6 +1,6 @@
 FROM node:16
 
-LABEL "maintainer" "Nicolas Lykke Iversen <nicolas.lykke.iversen@lego.dk>"
+LABEL "maintainer" "Jarrod Medrano"
 
 # Create app directory
 WORKDIR /usr/src/app

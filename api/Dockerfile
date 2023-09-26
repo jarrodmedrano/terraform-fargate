@@ -1,7 +1,5 @@
 FROM node:16
 
-LABEL "maintainer" "Nicolas Lykke Iversen <nicolas.lykke.iversen@lego.dk>"
-
 # Create app directory
 WORKDIR /usr/src/app
 
@@ -20,7 +18,7 @@ COPY . .
 RUN chown -R node:node /usr/src/app
 
 # Install curl for health checks
-RUN apt update && apt install -y curl 
+RUN apt-get update && apt-get install -y curl 
 
 USER node
 EXPOSE 8080
