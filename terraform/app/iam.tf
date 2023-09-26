@@ -1,6 +1,6 @@
-data "aws_iam_policy" "permissions_boundary" {
-  name = "network-boundary"
-}
+# data "aws_iam_policy" "permissions_boundary" {
+#   name = "network-boundary"
+# }
 
 data "aws_iam_policy_document" "ecs_assume_role_policy" {
   statement {
@@ -19,7 +19,7 @@ data "aws_iam_policy_document" "ecs_assume_role_policy" {
 resource "aws_iam_role" "ecs_task_execution_role" {
   name                 = "ecsTaskExecutionRole"
   assume_role_policy   = data.aws_iam_policy_document.ecs_assume_role_policy.json
-  permissions_boundary = data.aws_iam_policy.permissions_boundary.arn
+  # permissions_boundary = data.aws_iam_policy.permissions_boundary.arn
 
   tags = local.common_tags
 }
@@ -51,7 +51,7 @@ resource "aws_iam_role_policy" "ecs_task_execution_secret_read_policy" {
 resource "aws_iam_role" "ecs_task_role" {
   name                 = "ecsTaskRole"
   assume_role_policy   = data.aws_iam_policy_document.ecs_assume_role_policy.json
-  permissions_boundary = data.aws_iam_policy.permissions_boundary.arn
+  # permissions_boundary = data.aws_iam_policy.permissions_boundary.arn
 
   tags = local.common_tags
 }

@@ -95,10 +95,10 @@ resource "aws_ecs_task_definition" "app" {
       image     = local.app.container.image
       essential = true
       secrets = [
-        {
-          name      = "SECRET"
-          valueFrom = "${data.aws_secretsmanager_secret.app_secret.id}:::"
-        },
+        # {
+        #   name      = "SECRET"
+        #   valueFrom = "${data.aws_secretsmanager_secret.app_secret.id}:::"
+        # },
       ]
       environment = [
         {

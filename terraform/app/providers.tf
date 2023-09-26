@@ -13,15 +13,15 @@ terraform {
   }
 
   backend "s3" {
-    region = "eu-central-1"
-    bucket = "esp-tfstate"
+    region = "us-east-2"
+    bucket = "ecsdemo-tfstate-newish"
     key    = "tfstate"
   }
 }
 
 provider "aws" {
   region  = var.aws_region
-  profile = var.aws_profile
+  # profile = var.aws_profile
 }
 
 provider "random" {}

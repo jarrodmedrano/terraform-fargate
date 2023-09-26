@@ -1,9 +1,9 @@
 resource "aws_s3_bucket" "tfstate" {
-  bucket = "${var.application}-tfstate"
+  bucket = "${var.application}-tfstate-newish"
 
-  lifecycle {
-    prevent_destroy = true
-  }
+  # lifecycle {
+  #   prevent_destroy = true
+  # }
 }
 
 resource "aws_s3_bucket_versioning" "tfstate" {
@@ -33,7 +33,7 @@ data "aws_iam_policy_document" "tfstate" {
   statement {
     principals {
       type        = "AWS"
-      identifiers = [aws_iam_user.publisher.arn]
+      identifiers = toset([var.aws_profile])
     }
 
     actions = [

@@ -49,12 +49,10 @@ variable "logs_retention_in_days" {
 
 variable "aws_region" {
   type    = string
-  default = "eu-central-1"
+  default = "us-east-2"
 }
 
 variable "aws_profile" {
   type    = string
   default = null
 }
-
-

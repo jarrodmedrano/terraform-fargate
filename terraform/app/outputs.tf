@@ -52,3 +52,19 @@ output "ecs_api_image" {
   value       = local.api.container.image
   description = "ECS api image"
 }
+
+
+output "lb_tls_cert_secret" {
+  value = aws_secretsmanager_secret.lb_tls_cert.id
+  description = "TLS cert for load-balancer"
+}
+
+output "lb_tls_key_secret" {
+  value = aws_secretsmanager_secret.lb_tls_key.id
+  description = "TLS key for load-balancer"
+}
+
+output "app_secret" {
+  value = aws_secretsmanager_secret.app_secret.id
+  description = "Dummy secret for application"
+}
