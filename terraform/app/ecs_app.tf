@@ -117,7 +117,7 @@ resource "aws_ecs_task_definition" "app" {
         },
         {
           name  = "APP_URL"
-          value = "https://${aws_lb.main.dns_name}"
+          value = "http://${aws_lb.main.dns_name}"
         },
         {
           name  = "API_URL"
