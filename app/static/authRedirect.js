@@ -100,7 +100,7 @@ function passTokenToApi() {
 
 function checkApiHealth() {
   console.log("the url", apiConfig.uri);
-  callFakeApi(apiConfig.uri + "health")
+  callFakeApi(apiConfig.uri + "/health")
     .then((response) => {
       console.log("calling fake api response", response);
     })
