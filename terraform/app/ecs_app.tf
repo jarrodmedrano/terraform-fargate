@@ -9,6 +9,7 @@ resource "aws_ecs_service" "app" {
   launch_type                        = "FARGATE"
   scheduling_strategy                = "REPLICA"
   platform_version                   = "LATEST"
+  enable_execute_command   = true
 
   service_connect_configuration {
     enabled   = true
@@ -94,6 +95,7 @@ resource "aws_ecs_task_definition" "app" {
       name      = local.app.container.name
       image     = local.app.container.image
       essential = true
+      enable_execute_command   = true
       secrets = [
         # {
         #   name      = "SECRET"
@@ -121,6 +123,10 @@ resource "aws_ecs_task_definition" "app" {
           name  = "API_URL"
           value = "http://${local.api.container.name}:${local.api.container.port}"
         },
+        {
+          name = "chocolate"
+          value = "choees"
+        }
       ]
       portMappings = [
         {

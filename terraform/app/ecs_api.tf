@@ -8,6 +8,7 @@ resource "aws_ecs_service" "api" {
   launch_type                        = "FARGATE"
   scheduling_strategy                = "REPLICA"
   platform_version                   = "LATEST"
+  enable_execute_command   = true
 
   service_connect_configuration {
     enabled   = true
@@ -97,6 +98,7 @@ resource "aws_ecs_task_definition" "api" {
       image     = local.api.container.image
       essential = true
       secrets   = []
+      enable_execute_command   = true
       environment = [
         {
           name  = "NAME"
@@ -109,6 +111,10 @@ resource "aws_ecs_task_definition" "api" {
         {
           name  = "PORT"
           value = tostring(local.api.container.port)
+        },
+        {
+          name = "chocolate"
+          value = "choees"
         }
       ]
       portMappings = [
