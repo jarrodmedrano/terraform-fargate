@@ -1,8 +1,4 @@
 FROM node:16
-RUN apt-get update
-RUN apt-get install amazon-ssm-agent
-RUN systemctl start amazon-ssm-agent
-RUN systemctl enable amazon-ssm-agent
 LABEL "maintainer" "Jarrod Medrano"
 
 # Create app directory
