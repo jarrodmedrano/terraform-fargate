@@ -50,6 +50,8 @@ function callFakeApi(endpoint) {
       return resp.json();
     })
     .then((resp) => {
+      console.log("resp", resp);
+
       if (resp) {
         logMessage(
           "API response: " + "\n\n" + JSON.stringify(resp, undefined, 0) + "\n"

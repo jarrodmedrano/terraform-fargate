@@ -46,6 +46,8 @@ app.use((req, res, next) => {
 });
 
 app.get("/health", (req, res) => {
+  console.log("request from /health", req);
+  console.log("res from /health", res);
   res.status(200).json({
     health: "ok",
   });
