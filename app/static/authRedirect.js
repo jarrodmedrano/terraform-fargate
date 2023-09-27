@@ -99,11 +99,12 @@ function passTokenToApi() {
 }
 
 function checkApiHealth() {
-  callFakeApi(apiConfig.uri + "/health")
+  console.log("the url", apiConfig.uri);
+  callFakeApi(apiConfig.uri + "health")
     .then((response) => {
-      console.log(response);
+      console.log("calling fake api response", response);
     })
     .catch((error) => {
-      console.error(error);
+      console.error("calling fake api errors", error);
     });
 }
