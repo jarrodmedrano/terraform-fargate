@@ -53,6 +53,10 @@ app.get("/health", (req, res) => {
   });
 });
 
+app.get("/check", (req, res) => {
+  res.status(200).send("Hello, this is the check endpoint!");
+});
+
 app.get(
   "/api",
   passport.authenticate("oauth-bearer", { session: false }),

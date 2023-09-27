@@ -32,6 +32,21 @@ function callApi(endpoint, token) {
     });
 }
 
+async function callTheFakeApi(endpoint) {
+  try {
+    const headers = new Headers();
+
+    const options = {
+      method: "GET",
+      headers: headers,
+    };
+    const resp = await fetch(endpoint, options);
+    return resp.json();
+  } catch (error) {
+    console.log("error", error);
+  }
+}
+
 function callFakeApi(endpoint) {
   const headers = new Headers();
 
@@ -46,7 +61,6 @@ function callFakeApi(endpoint) {
 
   fetch(endpoint, options)
     .then((resp) => {
-      console.log("I am calling it now", Promise.all([resp.json()]));
       return resp.json();
     })
     .then((resp) => {
@@ -62,5 +76,18 @@ function callFakeApi(endpoint) {
     .catch((err) => {
       logMessage("API failed");
       console.error(err);
+    });
+}
+
+function checkApiHealth() {
+  console.log("the url", apiConfig.uri);
+  const newer = apiConfig.uri.replace(/https:/g, "http:");
+  console.log("newer", newer);
+  callTheFakeApi(newer + "/check")
+    .then((response) => {
+      console.log("calling fake api response", response);
+    })
+    .catch((error) => {
+      console.error("calling fake api errors", error);
     });
 }

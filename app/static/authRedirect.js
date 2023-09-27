@@ -97,16 +97,3 @@ function passTokenToApi() {
       console.error(error);
     });
 }
-
-function checkApiHealth() {
-  console.log("the url", apiConfig.uri);
-  const newer = apiConfig.uri.replace(/https:/g, "http:");
-  console.log("newer", newer);
-  callFakeApi(newer + "/health")
-    .then((response) => {
-      console.log("calling fake api response", response);
-    })
-    .catch((error) => {
-      console.error("calling fake api errors", error);
-    });
-}
