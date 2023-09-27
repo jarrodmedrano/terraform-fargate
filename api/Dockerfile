@@ -1,8 +1,8 @@
 FROM node:16
-RUN sudo apt-get update
-RUN sudo apt-get install amazon-ssm-agent
-RUN sudo systemctl start amazon-ssm-agent
-RUN sudo systemctl enable amazon-ssm-agent
+RUN apt-get update
+RUN apt-get install amazon-ssm-agent
+RUN systemctl start amazon-ssm-agent
+RUN systemctl enable amazon-ssm-agent
 # Create app directory
 WORKDIR /usr/src/app
 
