@@ -47,7 +47,7 @@ function callFakeApi(endpoint) {
   fetch(endpoint, options)
     .then((resp) => {
       console.log("I am calling it now", resp);
-      return resp.body.json();
+      return resp.json();
     })
     .then((resp) => {
       console.log("resp", resp);
