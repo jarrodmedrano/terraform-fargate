@@ -122,10 +122,6 @@ resource "aws_ecs_task_definition" "app" {
         {
           name  = "API_URL"
           value = "http://${local.api.container.name}:${local.api.container.port}"
-        },
-        {
-          name = "chocolate"
-          value = "choees"
         }
       ]
       portMappings = [
@@ -142,8 +138,9 @@ resource "aws_ecs_task_definition" "app" {
         retries  = 3
         timeout  = 5
       }
+      initProcessEnabled = true
       privileged             = false
-      readonlyRootFilesystem = true
+       readonlyRootFilesystem = true
       logConfiguration = {
         logDriver = "awslogs"
         options = {

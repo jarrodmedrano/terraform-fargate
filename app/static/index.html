@@ -46,20 +46,21 @@
         >
           Sign-out
         </button>
+        <button
+          type="button"
+          id="callApiButton"
+          class="btn btn-primary"
+          onclick="checkApiHealth()"
+        >
+          Check Api Health
+        </button>
       </div>
     </nav>
     <br />
     <h5 id="title-div" class="card-header text-center">
       Vanilla JavaScript single-page application secured with MSAL.js
     </h5>
-    <button
-      type="button"
-      id="callApiButton"
-      class="btn btn-primary d-none"
-      onclick="checkApiHealth()"
-    >
-      Check Api Health
-    </button>
+
     <h5 id="welcome-div" class="card-header text-center d-none"></h5>
     <br />
     <!-- Content -->

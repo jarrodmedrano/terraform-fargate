@@ -111,10 +111,6 @@ resource "aws_ecs_task_definition" "api" {
         {
           name  = "PORT"
           value = tostring(local.api.container.port)
-        },
-        {
-          name = "chocolate"
-          value = "choees"
         }
       ]
       portMappings = [
@@ -131,6 +127,7 @@ resource "aws_ecs_task_definition" "api" {
         retries  = 3
         timeout  = 5
       }
+      initProcessEnabled = true
       privileged             = false
       readonlyRootFilesystem = true
       logConfiguration = {
