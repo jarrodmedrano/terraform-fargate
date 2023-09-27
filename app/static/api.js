@@ -41,7 +41,8 @@ async function callTheFakeApi(endpoint) {
       headers: headers,
     };
     const resp = await fetch(endpoint, options);
-    return resp.json();
+    const newResp = await new Response(resp.body).text();
+    return newResp;
   } catch (error) {
     console.log("error", error);
   }
