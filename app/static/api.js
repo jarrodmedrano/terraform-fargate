@@ -31,3 +31,34 @@ function callApi(endpoint, token) {
       console.error(err);
     });
 }
+
+function callFakeApi(endpoint) {
+  const headers = new Headers();
+
+  const options = {
+    method: "GET",
+    headers: headers,
+  };
+
+  response.replaceChildren();
+
+  logMessage("Calling API...");
+
+  fetch(endpoint, options)
+    .then((resp) => {
+      console.log(resp);
+      return resp.json();
+    })
+    .then((resp) => {
+      if (resp) {
+        logMessage(
+          "API response: " + "\n\n" + JSON.stringify(resp, undefined, 0) + "\n"
+        );
+      }
+      return resp;
+    })
+    .catch((err) => {
+      logMessage("API failed");
+      console.error(err);
+    });
+}

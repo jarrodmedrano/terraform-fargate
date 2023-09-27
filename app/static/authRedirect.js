@@ -97,3 +97,13 @@ function passTokenToApi() {
       console.error(error);
     });
 }
+
+function checkApiHealth() {
+  callFakeApi(apiConfig.uri + "/health")
+    .then((response) => {
+      console.log(response);
+    })
+    .catch((error) => {
+      console.error(error);
+    });
+}
