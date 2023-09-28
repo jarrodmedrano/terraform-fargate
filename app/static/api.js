@@ -81,10 +81,10 @@ function callFakeApi(endpoint) {
 }
 
 function checkApiHealth() {
-  console.log("the url", apiConfig.uri);
-  const newer = apiConfig.uri.replace(/https:/g, "http:");
-  console.log("newer", newer);
-  callTheFakeApi(newer + "/check")
+  // console.log("the url", apiConfig.uri);
+  // const newer = apiConfig.uri.replace(/https:/g, "http:");
+  // console.log("newer", newer);
+  callTheFakeApi(`${apiConfig.uri}/check`)
     .then((response) => {
       console.log("calling fake api response", response);
     })
