@@ -19,14 +19,13 @@ app.use((req, res, next) => {
 });
 
 app.get("/health", (req, res) => {
-  console.log("request from /health", req);
-  console.log("res from /health", res);
   res.status(200).json({
     health: "ok",
   });
 });
 
 app.get("/api/check", (req, res) => {
+  console.log("requested the check api");
   res.status(200).send("Hello, this is the check endpoint!");
 });
 
