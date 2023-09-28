@@ -2,7 +2,7 @@ resource "aws_ecs_service" "app" {
   name                               = "app"
   cluster                            = aws_ecs_cluster.main.id
   task_definition                    = aws_ecs_task_definition.app.id
-  desired_count                      = 3
+  desired_count                      = 1
   deployment_minimum_healthy_percent = 50
   deployment_maximum_percent         = 200
   health_check_grace_period_seconds  = 60
@@ -43,7 +43,7 @@ resource "aws_ecs_service" "app" {
 
   # https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/appautoscaling_policy#preserve-desired-count-when-updating-an-autoscaled-ecs-service
   lifecycle {
-    ignore_changes = [desired_count, task_definition]
+    ignore_changes = []
   }
 
   tags = local.common_tags
@@ -122,6 +122,10 @@ resource "aws_ecs_task_definition" "app" {
         {
           name  = "API_URL"
           value = "http://${local.api.container.name}:${local.api.container.port}"
+        },
+        {
+          name  = "cat"
+          value = "cheese"
         }
       ]
       portMappings = [
@@ -140,7 +144,7 @@ resource "aws_ecs_task_definition" "app" {
       }
       initProcessEnabled = true
       privileged             = false
-       readonlyRootFilesystem = true
+      readonlyRootFilesystem = false
       logConfiguration = {
         logDriver = "awslogs"
         options = {
@@ -166,7 +170,7 @@ resource "aws_cloudwatch_log_group" "app" {
 
 resource "aws_appautoscaling_target" "app" {
   max_capacity       = 10
-  min_capacity       = 3
+  min_capacity       = 1
   resource_id        = "service/${aws_ecs_cluster.main.name}/${aws_ecs_service.app.name}"
   scalable_dimension = "ecs:service:DesiredCount"
   service_namespace  = "ecs"
