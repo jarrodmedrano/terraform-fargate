@@ -54,6 +54,7 @@ app.get("/api", function (req, res) {
 });
 
 app.get("/api/check", function (req, res) {
+  console.log("the api url", API_URL);
   fetch(`${API_URL}/api/check`, {
     method: "GET",
   })
