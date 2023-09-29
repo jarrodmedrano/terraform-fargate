@@ -9,9 +9,7 @@ function callApi(endpoint, token) {
     headers: headers,
   };
 
-  response.replaceChildren();
-
-  logMessage("Calling API...");
+  console.log("Calling API...");
 
   fetch(endpoint, options)
     .then((resp) => {
@@ -56,9 +54,7 @@ function callFakeApi(endpoint) {
     headers: headers,
   };
 
-  response.replaceChildren();
-
-  logMessage("Calling API...");
+  console.log("Calling API...");
 
   fetch(endpoint, options)
     .then((resp) => {

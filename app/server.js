@@ -64,6 +64,23 @@ app.get("/api", function (req, res) {
     });
 });
 
+app.get("/api/check", function (req, res) {
+  fetch(`${API_URL}/api/check`, {
+    method: "GET",
+  })
+    .then((resp) => {
+      console.log(resp);
+      return resp.json();
+    })
+    .then((json) => {
+      res.status(200).send(json);
+    })
+    .catch((err) => {
+      console.log(err);
+      res.sendStatus(500);
+    });
+});
+
 app.get("/secret", function (req, res) {
   const secret = process.env.SECRET;
 
