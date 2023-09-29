@@ -36,17 +36,6 @@ app.get("/authConfig.js", function (req, res) {
 });
 
 app.get("/api", function (req, res) {
-  const tokenHeader = req.headers["authorization"];
-
-  if (tokenHeader === undefined) {
-    res.sendStatus(401);
-  }
-
-  const parts = tokenHeader.split(" ");
-  if (parts.length !== 2 || parts[0] !== "Bearer") {
-    res.sendStatus(401);
-  }
-
   fetch(`${API_URL}/api`, {
     method: "GET",
     headers: { Authorization: tokenHeader },
@@ -76,7 +65,7 @@ app.get("/api/check", function (req, res) {
       res.status(200).send(json);
     })
     .catch((err) => {
-      console.log(err);
+      console.log("log error on check", err);
       res.sendStatus(500);
     });
 });
