@@ -111,10 +111,6 @@ resource "aws_ecs_task_definition" "api" {
         {
           name  = "PORT"
           value = tostring(local.api.container.port)
-        },
-        {
-          name  = "shit"
-          value = "fuck"
         }
       ]
       portMappings = [

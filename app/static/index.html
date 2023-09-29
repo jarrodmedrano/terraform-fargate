@@ -6,16 +6,8 @@
       name="viewport"
       content="width=device-width, initial-scale=1.0, shrink-to-fit=no"
     />
-    <title>Azure AD | Vanilla JavaScript SPA</title>
+    <title>Vanilla JavaScript SPA</title>
     <link rel="SHORTCUT ICON" href="./favicon.svg" type="image/x-icon" />
-
-    <!-- msal.min.js can be used in the place of msal.js; included msal.js to make debug easy -->
-    <script
-      id="load-msal"
-      src="https://alcdn.msauth.net/browser/2.15.0/js/msal-browser.js"
-      integrity="sha384-dFzMiVGB5HpWZ+5w5VSif6jhWfNeplSw9ACYmQKZcY2azuT9kCxVWVI9HyfGdkHV"
-      crossorigin="anonymous"
-    ></script>
 
     <!-- adding Bootstrap 4 for UI components  -->
     <link
@@ -28,24 +20,8 @@
 
   <body>
     <nav class="navbar navbar-expand-lg navbar-dark bg-primary">
-      <a class="navbar-brand" href="/">Microsoft identity platform</a>
+      <a class="navbar-brand" href="/">Logo</a>
       <div class="btn-group ml-auto dropleft">
-        <button
-          type="button"
-          id="signIn"
-          class="btn btn-secondary"
-          onclick="signIn()"
-        >
-          Sign-in
-        </button>
-        <button
-          type="button"
-          id="signOut"
-          class="btn btn-success d-none"
-          onclick="signOut()"
-        >
-          Sign-out
-        </button>
         <button
           type="button"
           id="callApiButton"
@@ -58,31 +34,8 @@
     </nav>
     <br />
     <h5 id="title-div" class="card-header text-center">
-      Vanilla JavaScript single-page application secured with MSAL.js
+      Vanilla JavaScript single-page application
     </h5>
-
-    <h5 id="welcome-div" class="card-header text-center d-none"></h5>
-    <br />
-    <!-- Content -->
-    <div class="card">
-      <h5 class="card-header text-center">
-        Getting an Access Token and calling a Web API
-      </h5>
-      <div class="card-body text-center">
-        <h5 id="label" class="card-title">
-          Sign-in with the Microsoft Identity platform
-        </h5>
-        <pre id="response" class="card-text"></pre>
-        <button
-          type="button"
-          id="callApiButton"
-          class="btn btn-primary d-none"
-          onclick="passTokenToApi()"
-        >
-          Call API
-        </button>
-      </div>
-    </div>
 
     <!-- importing bootstrap.js and supporting js libraries -->
     <script
@@ -105,7 +58,6 @@
     <script type="text/javascript" src="./authConfig.js"></script>
     <script type="text/javascript" src="./ui.js"></script>
 
-    <script type="text/javascript" src="./authRedirect.js"></script>
     <script type="text/javascript" src="./api.js"></script>
   </body>
 </html>

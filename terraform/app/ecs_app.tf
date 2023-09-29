@@ -122,10 +122,6 @@ resource "aws_ecs_task_definition" "app" {
         {
           name  = "API_URL"
           value = "http://${local.api.container.name}:${local.api.container.port}"
-        },
-        {
-          name  = "cat"
-          value = "cheese"
         }
       ]
       portMappings = [
