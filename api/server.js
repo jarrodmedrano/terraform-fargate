@@ -26,7 +26,9 @@ app.get("/health", (req, res) => {
 
 app.get("/api/check", (req, res) => {
   console.log("requested the check api");
-  res.status(200).send("Hello, this is the check endpoint!");
+  res.status(200).json({
+    hello: "baby",
+  });
 });
 
 app.get("/api", (req, res) => {
